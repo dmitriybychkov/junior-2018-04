@@ -32,7 +32,7 @@ function printPlan() {
     console.log(s);
 }
 
-printPlan();
+//printPlan();
 
 function moveLeft() {
     if (plan[mageY][mageX - 1] == ' ') {
@@ -150,7 +150,61 @@ function move(dir) {
     }
 }
 
-move(dir);
+//move(dir);
+
+//Домашняя работа, задание 2( не доделал:С )
+
+function moveL() {
+    if (plan[mageY][mageX - 1] == ' ') {
+        mageX--;
+    }
+    createField(n);
+}
+
+function moveR() {
+    if (plan[mageY][mageX + 1] == ' ') {
+        mageX++;
+    }
+    createField(n);
+}
+
+function moveU() {
+    if (plan[mageY - 1][mageX] == ' ') {
+        mageY--;
+    }
+    createField(n);
+}
+
+function moveD() {
+    if (plan[mageY + 1][mageX] == ' ') {
+        mageY++;
+    }
+    createField(n);
+}
+let n = 10;
+function createField (n) {
+    let plan = [];
+    for ( let i = 0; i < n; i++ ) {
+        plan[i] = [];
+        for ( let j = 0; j < n; j++ ) {
+            if ( i == mageY && j == mageX ) {
+                plan[i][j] = 'W';
+            } else if ( i == 0 || i == n - 1 || j == 0 || j == n - 1 ) {
+                plan[i][j] = '#';
+            } else {
+                plan[i][j] = ' ';
+            }
+        }
+    }
+    plan = plan.join('\n');
+    console.log(plan);
+}
+
+createField(n);
+
+while (plan[mageY][mageX + 1] == ' ') {
+    moveR();
+}
 
 //Домашняя работа, задание 3
 
